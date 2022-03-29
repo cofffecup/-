@@ -11,3 +11,9 @@ spiral:
 
 cut_it:
 	gcc -Wall -Werror -Wextra 2_cut_it.c -o ../builds/cut_it
+
+test:
+	gcc -Wall -Werror -Wextra test.c
+
+simplex:
+	gcc -Wall -Werror -Wextra 3_simplex/simplex.c -o ../builds/simplex
