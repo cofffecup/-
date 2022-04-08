@@ -30,7 +30,7 @@ int main() {
 void arr_size_input(int *rows, int *columns) {
     printf("Введите количество переменных: ");
     scanf("%d", columns);
-    printf("Введите количество уравнений с учетом Zmax в канонической форме: ");
+    printf("Введите количество уравнений, задающих условия: ");
     scanf("%d", rows);
 }
 
@@ -52,6 +52,7 @@ void tabl_input(float **tabl, int rows, int columns) {
                 if (j > 0 && j <= columns - rows) {
                     printf("при х%d: ", j);
                     scanf("%f", &tabl[i - 1][j]);
+                    tabl[i - 1][j] *= -1;
                 } else {
                     tabl[i - 1][j] = 0;
                 }
@@ -119,15 +120,6 @@ void change_tabl(float **tabl, int rows, int columns, int *flag, int *basis) {
     }
 
     for (int j = 0; j < columns; ++j) {
-        int basis_flag = 0;
-        int ind = 0;
-        for (int k = 0; k < rows - 1; k++) {
-            if (basis[k] == j) {
-                basis_flag = 1;
-                ind = k;
-                break;
-            }
-        }
         for (int i = 0; i < rows; ++i) {
             if (i != y) {
                 tabl[i][j] = (tmp[i][j] * res - tmp[i][x]*tmp[y][j])/res;
@@ -150,5 +142,10 @@ void change_tabl(float **tabl, int rows, int columns, int *flag, int *basis) {
         *flag = 1;
     else
         *flag = 0;
-    printf("res = %.1f\ny = %d, x = %d\n\n", res, x, y);
+    printf("res = %.1f\nстрока = %d, столбец = %d\n\n", res, x, y+1);
+    printf("Переменные в базисе следующей таблицы: ");
+    for (int i = 0; i < rows - 1; ++i) {
+        printf("x%d ", basis[i]);
+    }
+    printf("\n\n");
 }

@@ -1,10 +1,10 @@
-s = input()
-x = s.count('f')
-if x == 1:
-    print('-1')
-elif x == 0:
-    print('-2')
-else:
-    i = s.find('f')
-    s = s[i + 1:]
-    print(s.find('f'))
+def quick_merge(n):
+    res = []
+    for i in range(n):
+        res += [int(x) for x in input().split()]
+	
+    res.sort()
+    return res
+
+n = int(input())
+print(quick_merge(n))
