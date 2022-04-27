@@ -17,3 +17,9 @@ test:
 
 simplex:
 	gcc -Wall -Werror -Wextra 3_simplex/simplex.c -o ../builds/simplex
+
+struct:
+	gcc -Wall -Werror -Wextra 4_struct.c -o ../builds/struct
+
+input:
+	gcc -Wall -Werror -Wextra 5_dynamic_input -o ../builds/input
